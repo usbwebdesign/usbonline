@@ -1,0 +1,60 @@
+/* 300 - Light */
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 400 - Regular */
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 600 - SemiBold */
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 700 - Bold */
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Puedes agregar los pesos 300 y 600 si los convertiste */
+
+/* 2. Variables Globales */
+:root {
+  --font-sora: 'Sora', system-ui, -apple-system, sans-serif;
+}
+
+/* 3. Reset y Aplicación */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Aplicar aquí permite que todo lo herede correctamente */
+  font-family: var(--font-sora);
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5; /* Mejora la legibilidad y accesibilidad */
+}

@@ -1,0 +1,83 @@
+---
+import { createClient } from "@supabase/supabase-js";
+import Navbar from '../../components/Navbar/Navbar.tsx'; 
+import Footer from '../../components/Footer/Footer.tsx';
+import "./noticia-detalle.css"; 
+
+export async function getStaticPaths() {
+  const supabase = createClient(import.meta.env.PUBLIC_SUPABASE_URL, import.meta.env.PUBLIC_SUPABASE_ANON_KEY);
+  const { data: noticias } = await supabase.from("Noticias").select("id");
+  return (noticias || []).map((n) => ({ params: { id: n.id.toString() } }));
+}
+
+const { id } = Astro.params;
+const supabase = createClient(import.meta.env.PUBLIC_SUPABASE_URL, import.meta.env.PUBLIC_SUPABASE_ANON_KEY);
+const { data: noticia } = await supabase.from("Noticias").select("*").eq("id", id).single();
+
+if (!noticia) return Astro.redirect('/404');
+
+// --- SEO Y METADATOS ESENCIALES ---
+const seoTitle = `${noticia.titulo} | Blog USBOnline`;
+const seoDesc = noticia.descripcion?.substring(0, 160);
+// Usamos Astro.url.href para evitar errores de "Invalid URL" si no hay site configurado
+const canonicalURL = Astro.url.href; 
+---
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDesc} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={seoDesc} />
+    <meta property="og:image" content={noticia.imagenportada} />
+    <meta property="og:url" content={canonicalURL} />
+</head>
+<body>
+    <Navbar client:load />
+
+    <header class="BannerNoticia" style={`background-image: url('${noticia.img_banner}')`}>
+        <p>{noticia.subtitulo}</p>
+    </header>
+
+    <main class="contenido">
+      <article>
+        <header class="cont-imagen-titulo">
+          <img src={noticia.imagenportada} alt={`Portada: ${noticia.titulo}`} />
+          <h1>{noticia.titulo}</h1>
+        </header>
+
+        <section class="meta-info">
+          <h2 class="subtema">{noticia.descripcion}</h2>
+          <p class="Autor">
+            Publicado por <strong>USBOnline</strong> el 
+            <time datetime={noticia.fecha}>{noticia.fecha}</time>
+          </p>
+        </section>
+
+        <div class="parrafos">
+          <p>{noticia.parrafo1}</p>
+          <p>{noticia.parrafo2}</p>
+          <p>{noticia.parrafo3}</p>
+        </div>
+
+        {noticia.imagen_contenido && (
+          <figure class="cont-imagen-adicional">
+            <img src={noticia.imagen_contenido} class="imagen-contenido" alt="Contenido visual de apoyo" />
+          </figure>
+        )}
+        
+        <nav aria-label="Volver al listado">
+          <a href="/blog" class="btn-volver">Volver al blog</a>
+        </nav>
+      </article>
+    </main>
+
+    <Footer client:load />
+</body>
+</html>
