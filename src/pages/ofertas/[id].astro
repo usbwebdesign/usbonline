@@ -165,15 +165,14 @@ const seoDescription = `Estudia la ${oferta.titulo} en USB Online. ${oferta.obje
 
         <div class="od-brochure-content">
             <h2 class="od-brochure-title">{oferta.categoriamin} en {oferta.titulo}</h2>
-                <a 
-                href={oferta.brochure} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                download={`${oferta.titulo}-Brochure.pdf`}
-                class="od-brochure-btn"
-                >
-                    Ver programa
-                </a>
+<a 
+    href={oferta.brochure ? oferta.brochure.trim() : "#"} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="od-brochure-btn"
+>
+    Ver programa
+</a>
         </div>
         <div class="od-brochure-icon">
             <svg viewBox="0 0 24 24" fill="white">
