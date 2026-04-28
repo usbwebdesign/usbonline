@@ -1,12 +1,12 @@
-// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  output: 'static', // O 'hybrid' si usas Supabase en el servidor
+  // Cambiamos temporalmente a server para forzar a Vercel a ignorar el caché estático
+  output: 'server', 
   adapter: vercel({
-    entrypointResolution: 'auto'
+    webAnalytics: { enabled: true }, // Esto añade un cambio en la estructura
   }),
   integrations: [react()],
 });
