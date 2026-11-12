@@ -13,10 +13,10 @@ interface Review {
 const reviews: Review[] = [
   {
     id: 1,
-    text: "Me conecto desde cualquier lugar y siempre encuentro material actualizado.",
-    author: "Valentina Pérez",
+    text: "Tiene un programa muy completo y me gustaron mucho las clases.",
+    author: "Andrea Flores",
     role: "Estudiante de Gestión Educativa y Talento Humano",
-    avatar: "./img/resena-mujer-usbonline.webp"
+    avatar: "./img/resena1.png"
   },
   {
     id: 2,
@@ -27,10 +27,10 @@ const reviews: Review[] = [
   },
   {
     id: 3,
-    text: "Los profesores responden rápido y explican todo de forma sencilla.",
-    author: "Sofía Rojas",
+    text: "La especialidad me ayudó muchísimo a fortalecer los conocimientos que vi en la carrera, y en mi trabajo, en la parte de posicionamiento de marca y análisis de mercado.",
+    author: "Fernada Islas",
     role: "Estudiante de Mercadotecnia Estratégica",
-    avatar: "./img/resena-joven-usbonline.webp"
+    avatar: "./img/resena3.png"
   }
 ];
 
