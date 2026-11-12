@@ -13,26 +13,48 @@ import s from './Testimonials.module.css';
 
 interface VideoTestimonial {
   id: string;
-  thumbnail: string;
-  youtubeId: string;
+  videoUrl: string; // Ruta al archivo .mp4
   name: string;
+  poster?: string;  // Imagen de portada opcional antes de reproducir
 }
 
 const videos: VideoTestimonial[] = [
-  { id: '1', thumbnail: '/img/testimonio1.webp', youtubeId: 'VIDEO_ID_1', name: 'Ricardo G.' },
-  { id: '2', thumbnail: '/img/testimonio2.webp', youtubeId: 'VIDEO_ID_2', name: 'Andrea M.' },
-  { id: '3', thumbnail: '/img/testimonio3.webp', youtubeId: 'VIDEO_ID_3', name: 'Luis P.' },
+  { 
+    id: '1', 
+    videoUrl: '/videos/testimonio1.mp4', // <-- Cambia esto por la ruta de tu video .mp4
+    name: 'Alejandro R.' 
+  },
+  { 
+    id: '2', 
+    videoUrl: '/videos/testimonio2.mp4', 
+    name: 'Adelita I.' 
+  },
+  { 
+    id: '3', 
+    videoUrl: '/videos/testimonio3.mp4', 
+    name: 'Diana M.' 
+  },
 ];
 
 export default function Testimonials() {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<VideoTestimonial | null>(null);
 
   const renderCard = (video: VideoTestimonial, index: number) => (
     <div 
       className={`${s.videoCard} ${index === 1 ? s.featured : ''}`}
-      onClick={() => setSelectedVideo(video.youtubeId)}
+      onClick={() => setSelectedVideo(video)}
     >
-      <img src={video.thumbnail} alt={`Testimonio de ${video.name}`} className={s.thumb} />
+      {/* Reproductor en vista previa: en bucle, silenciado y autoejecutado */}
+      <video 
+        src={video.videoUrl} 
+        poster={video.poster}
+        className={s.thumb} 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+      />
+
       <div className={s.overlay}>
         <div className={s.playButtonContainer}>
           <div className={s.playIconWrapper}>
@@ -82,7 +104,7 @@ export default function Testimonials() {
         </Swiper>
       </div>
 
-      {/* Modal Dinámico */}
+      {/* Modal Dinámico para reproducir el video con audio */}
       <AnimatePresence>
         {selectedVideo && (
           <motion.div 
@@ -94,15 +116,12 @@ export default function Testimonials() {
           >
             <div className={s.modalContent} onClick={e => e.stopPropagation()}>
               <div className={s.videoWrapper}>
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`} 
-                  title="YouTube video player" 
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowFullScreen
-                ></iframe>
+                <video 
+                  src={selectedVideo.videoUrl} 
+                  controls 
+                  autoPlay 
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+                />
               </div>
               <button className={s.closeBtn} onClick={() => setSelectedVideo(null)} aria-label="Cerrar video">
                 &times;
