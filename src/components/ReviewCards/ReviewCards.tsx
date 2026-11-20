@@ -20,10 +20,10 @@ const reviews: Review[] = [
   },
   {
     id: 2,
-    text: "Me gustan los recursos, foros activos y materiales siempre actualizados.",
-    author: "Javier Mendoza",
-    role: "Estudiante de Logística",
-    avatar: "./img/resena-adulto-posgrado-usbonline.webp"
+    text: "Estudiar el doctorado en la Universidad Simón Bolívar fue una decisión que cambió mi vida. El nivel de profesionalismo y exigencia académica me motivó a ir más allá durante todo este camino, en el que siempre estuve acompañada. Sin duda, ha sido una experiencia transformadora; estoy feliz de haber elegido esta universidad.",
+    author: "Karla Karina Tenorio",
+    role: "Estudiante del Doctorado",
+    avatar: "./img/resena2.png"
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export default function ReviewCards() {
             className={s.card}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true }} 
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
             {/* Comilla tipográfica para máxima legibilidad visual */}
