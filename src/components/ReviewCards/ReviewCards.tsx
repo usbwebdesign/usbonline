@@ -15,21 +15,21 @@ const reviews: Review[] = [
     id: 1,
     text: "Tiene un programa muy completo y me gustaron mucho las clases.",
     author: "Andrea Flores",
-    role: "Estudiante de Gestión Educativa y Talento Humano",
+    role: "Egresada de la Especialidad en Gestión Educativa y Talento Humano",
     avatar: "./img/resena1.png"
   },
   {
     id: 2,
     text: "Estudiar el doctorado en la Universidad Simón Bolívar fue una decisión que cambió mi vida. El nivel de profesionalismo y exigencia académica me motivó a ir más allá durante todo este camino, en el que siempre estuve acompañada. Sin duda, ha sido una experiencia transformadora; estoy feliz de haber elegido esta universidad.",
     author: "Karla Karina Tenorio",
-    role: "Estudiante del Doctorado",
+    role: "Egresada del Doctorado en Comunicación Audiovisual Estratégica",
     avatar: "./img/resena2.png"
   },
   {
     id: 3,
     text: "La especialidad me ayudó muchísimo a fortalecer los conocimientos que vi en la carrera, y en mi trabajo, en la parte de posicionamiento de marca y análisis de mercado.",
     author: "Fernada Islas",
-    role: "Estudiante de Mercadotecnia Estratégica",
+    role: "Egresada de la Especialidad en Mercadotecnia Estratégica",
     avatar: "./img/resena3.png"
   }
 ];
