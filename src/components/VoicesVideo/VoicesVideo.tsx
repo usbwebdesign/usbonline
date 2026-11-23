@@ -7,7 +7,7 @@ interface VoicesProps {
   videoId?: string;
 }
 
-export default function Voices({ videoId = "prSqD3qGjdI" }: VoicesProps) {
+export default function Voices({ videoId = "7GpGCbxUdGE" }: VoicesProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
