@@ -19,7 +19,7 @@ export default function Voices({ videoId = "7GpGCbxUdGE" }: VoicesProps) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          Voces que enseñan
+          Aprende sin pausar tu vida
         </motion.h2>
         <motion.p 
           className={s.subtitle}
@@ -28,7 +28,7 @@ export default function Voices({ videoId = "7GpGCbxUdGE" }: VoicesProps) {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Historias reales de quienes transforman el aprendizaje en modalidad online.
+          Una experiencia educativa 100 % en línea, disfruta la libertad de estudiar desde donde estés, respaldado por docentes expertos y una atención diseñada a tu medida.
         </motion.p>
       </div>
 
